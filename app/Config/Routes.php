@@ -44,6 +44,10 @@ $routes->get('/logout', 'Auth::logout');
 $routes->get('/user', 'User::index');
 $routes->get('/admin', 'Admin::index');
 $routes->get('/superadmin', 'SuperAdmin::index');
+$routes->get('superadmin/laboratorium', 'SuperAdmin::laboratorium');
+$routes->get('superadmin/adminlab', 'SuperAdmin::adminlab');
+$routes->get('superadmin/tambahadmin', 'SuperAdmin::tambahAdmin');
+$routes->post('superadmin/simpanadmin', 'SuperAdmin::simpanAdmin');
 
 
 /*

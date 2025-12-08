@@ -54,3 +54,27 @@ in APPPATH\Views\admin\v_dashboard_admin.php on line 5.
 CRITICAL - 2025-12-08 02:32:56 --> Cannot declare class App\Controllers\Admin, because the name is already in use
 in APPPATH\Views\admin\v_dashboard_admin.php on line 5.
  1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 02:59:56 --> Class "App\Models\LaboratoriumModel" not found
+in APPPATH\Controllers\SuperAdmin.php on line 20.
+ 1 SYSTEMPATH\CodeIgniter.php(887): App\Controllers\SuperAdmin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(471): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 03:01:52 --> Class "App\Models\PeminjamanModel" not found
+in APPPATH\Controllers\SuperAdmin.php on line 21.
+ 1 SYSTEMPATH\CodeIgniter.php(887): App\Controllers\SuperAdmin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(471): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 03:09:31 --> Class "App\Models\PeminjamanModel" not found
+in APPPATH\Controllers\SuperAdmin.php on line 21.
+ 1 SYSTEMPATH\CodeIgniter.php(887): App\Controllers\SuperAdmin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(471): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 03:09:32 --> Class "App\Models\PeminjamanModel" not found
+in APPPATH\Controllers\SuperAdmin.php on line 21.
+ 1 SYSTEMPATH\CodeIgniter.php(887): App\Controllers\SuperAdmin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(471): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
