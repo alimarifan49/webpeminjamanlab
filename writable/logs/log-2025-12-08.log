@@ -33,3 +33,24 @@ in SYSTEMPATH\CodeIgniter.php on line 222.
  1 SYSTEMPATH\CodeIgniter.php(222): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
  2 SYSTEMPATH\CodeIgniter.php(182): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
  3 FCPATH\index.php(55): CodeIgniter\CodeIgniter->initialize()
+CRITICAL - 2025-12-08 02:32:27 --> Cannot declare class App\Controllers\Admin, because the name is already in use
+in APPPATH\Views\admin\v_dashboard_admin.php on line 5.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 02:32:50 --> Cannot declare class App\Controllers\Admin, because the name is already in use
+in APPPATH\Views\admin\v_dashboard_admin.php on line 5.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 02:32:51 --> Cannot declare class App\Controllers\Admin, because the name is already in use
+in APPPATH\Views\admin\v_dashboard_admin.php on line 5.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 02:32:53 --> Cannot declare class App\Controllers\Admin, because the name is already in use
+in APPPATH\Views\admin\v_dashboard_admin.php on line 5.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 02:32:53 --> Cannot declare class App\Controllers\Admin, because the name is already in use
+in APPPATH\Views\admin\v_dashboard_admin.php on line 5.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 02:32:55 --> Cannot declare class App\Controllers\Admin, because the name is already in use
+in APPPATH\Views\admin\v_dashboard_admin.php on line 5.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 02:32:56 --> Cannot declare class App\Controllers\Admin, because the name is already in use
+in APPPATH\Views\admin\v_dashboard_admin.php on line 5.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
