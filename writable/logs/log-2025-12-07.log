@@ -1,0 +1,94 @@
+CRITICAL - 2025-12-07 21:37:12 --> Class "App\Models\UserModel" not found
+in APPPATH\Controllers\Auth.php on line 29.
+ 1 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+ 2 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-12-07 21:43:14 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:170
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php(170): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), 'db_peminjamanla...', 3306, '', 0)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(624): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\Auth.php(40): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(624): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\Auth.php(40): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+#7 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-12-07 21:43:14 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `nim` = :nim:
+OR `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(40): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-12-07 21:43:20 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:170
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php(170): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), 'db_peminjamanla...', 3306, '', 0)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(624): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\Auth.php(40): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(624): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\Auth.php(40): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+#7 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-12-07 21:43:20 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `nim` = :nim:
+OR `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(40): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
