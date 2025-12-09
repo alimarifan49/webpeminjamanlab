@@ -5,6 +5,9 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\LaboratoriumModel;
 use App\Models\PeminjamanModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Dompdf\Dompdf;
 
 class SuperAdmin extends BaseController
 {
@@ -218,4 +221,70 @@ public function updateLaboratorium($id)
         $data['riwayat'] = $this->peminjamanModel->getRiwayat(); // Pastikan fungsi getRiwayat ada di model
         return view('superadmin/v_riwayat', $data); // pastikan view ada
     }
+
+
+    public function exportExcel()
+    {
+        $laboratoriumModel = new \App\Models\LaboratoriumModel();
+        $labs = $laboratoriumModel->getLaboratoriumWithAdmin(); // ambil nama & nim admin
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Header
+        $sheet->setCellValue('A1', '#')
+            ->setCellValue('B1', 'Nama Laboratorium')
+            ->setCellValue('C1', 'Lokasi')
+            ->setCellValue('D1', 'Harga Sewa')
+            ->setCellValue('E1', 'Tipe')
+            ->setCellValue('F1', 'Admin');
+
+        $row = 2;
+        $i = 1;
+        foreach ($labs as $lab) {
+            $sheet->setCellValue('A'.$row, $i++)
+                ->setCellValue('B'.$row, $lab['nama_lab'])
+                ->setCellValue('C'.$row, $lab['lokasi'])
+                ->setCellValue('D'.$row, $lab['harga_sewa'])
+                ->setCellValue('E'.$row, $lab['tipe'])
+                ->setCellValue('F'.$row, $lab['admin_nama'] . ' | ' . $lab['admin_nim']);
+            $row++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        // Set header untuk download
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="Daftar_Laboratorium.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+        exit; // pastikan eksekusi berhenti setelah output
+    }
+
+        public function exportPDF()
+    {
+        $laboratoriumModel = new \App\Models\LaboratoriumModel();
+        $laboratorium = $laboratoriumModel->getLaboratoriumWithAdmin(); // pastikan join admin
+
+        $admin = [
+            'nama' => session()->get('nama') ?? 'SuperAdmin',
+            'nim'  => session()->get('nim') ?? '000000'
+        ];
+
+        $data = [
+            'laboratorium' => $laboratorium,
+            'admin' => $admin
+        ];
+
+        $html = view('superadmin/pdf_laboratorium', $data);
+
+        $dompdf = new Dompdf();
+        // Ukuran Folio dalam pt: width 612, height 936
+        $dompdf->setPaper([0,0,612,936], 'portrait');
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+        $dompdf->stream('pdf_laboratorium.pdf', ['Attachment' => true]);
+    }
+
 }

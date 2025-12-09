@@ -61,6 +61,8 @@ $routes->match(['get', 'post'], 'superadmin/gantiAdmin/(:num)', 'SuperAdmin::gan
 
 $routes->get('superadmin/editLaboratorium/(:num)', 'SuperAdmin::editLaboratorium/$1');
 $routes->post('superadmin/updateLaboratorium/(:num)', 'SuperAdmin::updateLaboratorium/$1');
+$routes->get('superadmin/exportExcel', 'SuperAdmin::exportExcel');
+$routes->get('superadmin/exportPDF', 'SuperAdmin::exportPDF');
 
 
 

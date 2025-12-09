@@ -4,6 +4,11 @@
 
 <a href="<?= base_url('superadmin') ?>" class="btn btn-secondary mb-3">Kembali ke Dashboard</a>
 <a class="btn btn-primary mb-3" href="<?= base_url('superadmin/tambahLaboratorium') ?>">Tambah Laboratorium</a>
+<a href="<?= base_url('superadmin/exportExcel') ?>" class="btn btn-success mb-3">Export Excel</a>
+<a href="<?= base_url('superadmin/exportPDF') ?>" class="btn btn-danger mb-3">Export PDF</a>
+
+
+
 
 <?php if (!empty($laboratorium) && is_array($laboratorium)) : ?>
     <div class="table-responsive">
