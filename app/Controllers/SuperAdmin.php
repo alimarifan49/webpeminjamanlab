@@ -38,19 +38,111 @@ class SuperAdmin extends BaseController
     public function index()
     {
         $this->checkLogin();
+
         $data['nama'] = $this->session->get('nama') ?? 'SuperAdmin';
-        return view('superadmin/v_dashboard', $data);
+
+        return view('superadmin/v_default_superadmin', $data);
     }
+
 
     /**
      * Daftar laboratorium
      */
     public function laboratorium()
     {
-        $this->checkLogin();
-        $data['laboratorium'] = $this->labModel->findAll();
-        return view('superadmin/v_laboratorium', $data); // pastikan view ada
+        $laboratoriumModel = new LaboratoriumModel();
+        $adminModel = new UserModel(); // asumsikan model user ada
+
+        $labs = $laboratoriumModel->findAll();
+
+        // Tambahkan info admin
+        foreach ($labs as &$lab) {
+            if (!empty($lab['admin_id'])) {
+                $admin = $adminModel->find($lab['admin_id']);
+                $lab['admin_nama'] = $admin['nama'] ?? '-';
+                $lab['admin_nim'] = $admin['nim'] ?? '-';
+            } else {
+                $lab['admin_nama'] = '-';
+                $lab['admin_nim'] = '-';
+            }
+        }
+
+        $data['laboratorium'] = $labs;
+
+        return view('superadmin/v_laboratorium', $data);
     }
+    // Hapus laboratorium
+public function hapusLaboratorium($id)
+{
+    $laboratoriumModel = new \App\Models\LaboratoriumModel();
+
+    // Pastikan data ada
+    $lab = $laboratoriumModel->find($id);
+    if ($lab) {
+        $laboratoriumModel->delete($id);
+        // Redirect kembali ke daftar laboratorium dengan pesan sukses
+        return redirect()->to(base_url('superadmin/laboratorium'))
+                         ->with('success', 'Laboratorium berhasil dihapus.');
+    } else {
+        return redirect()->to(base_url('superadmin/laboratorium'))
+                         ->with('error', 'Laboratorium tidak ditemukan.');
+    }
+}
+
+// Ganti Admin
+public function gantiAdmin($id)
+{
+    $laboratoriumModel = new \App\Models\LaboratoriumModel();
+    $userModel = new \App\Models\UserModel();
+
+    // Ambil data lab
+    $lab = $laboratoriumModel->find($id);
+    if (!$lab) {
+        return redirect()->to(base_url('superadmin/laboratorium'))
+                         ->with('error', 'Laboratorium tidak ditemukan.');
+    }
+
+    // Jika form sudah disubmit
+    if ($this->request->getMethod() === 'post') {
+        $admin_id = $this->request->getPost('admin_id');
+        $laboratoriumModel->update($id, ['admin_id' => $admin_id]);
+        return redirect()->to(base_url('superadmin/laboratorium'))
+                         ->with('success', 'Admin laboratorium berhasil diubah.');
+    }
+
+    // Jika belum submit, tampilkan form pilih admin
+    $data['lab'] = $lab;
+    $data['adminList'] = $userModel->where('role', 2)->findAll(); // role 2 = admin lab
+    return view('superadmin/v_ganti_admin', $data);
+}
+    public function editLaboratorium($id)
+{
+    $laboratoriumModel = new LaboratoriumModel();
+    $data['laboratorium'] = $laboratoriumModel->find($id);
+
+    // Ambil list admin untuk dropdown
+    $userModel = new UserModel();
+    $data['adminList'] = $userModel->where('role', 2)->findAll(); // Role 2 = Admin Lab
+
+    return view('superadmin/v_edit_laboratorium', $data);
+}
+
+public function updateLaboratorium($id)
+{
+    $laboratoriumModel = new LaboratoriumModel();
+
+    $data = [
+        'nama_lab'   => $this->request->getPost('nama_lab'),
+        'lokasi'     => $this->request->getPost('lokasi'),
+        'harga_sewa' => $this->request->getPost('harga_sewa'),
+        'tipe'       => $this->request->getPost('tipe'),
+        'admin_id'   => $this->request->getPost('admin_id'),
+    ];
+
+    $laboratoriumModel->update($id, $data);
+
+    return redirect()->to(base_url('superadmin/laboratorium'));
+}
 
     /**
      * Daftar admin lab
@@ -83,6 +175,39 @@ class SuperAdmin extends BaseController
 
         return view('superadmin/v_tambah_admin'); // pastikan view ada
     }
+
+    public function tambahLaboratorium()
+    {
+        $userModel = new UserModel();
+
+        // Ambil semua user yang role-nya admin lab (role = 'adminlab' atau 2)
+        $adminList = $userModel->where('role', 'admin')->findAll();
+
+        // Kirim ke view
+        return view('superadmin/v_tambah_laboratorium', [
+            'adminList' => $adminList
+        ]);
+    }
+
+
+    public function simpanLaboratorium()
+    {
+        $laboratoriumModel = new LaboratoriumModel();
+
+        $data = [
+            'nama_lab' => $this->request->getPost('nama_lab'),
+            'lokasi'   => $this->request->getPost('lokasi'),
+            'harga_sewa' => $this->request->getPost('harga_sewa'),
+            'tipe'     => $this->request->getPost('tipe'),
+            'admin_id' => $this->request->getPost('admin_id'),
+        ];
+
+        $laboratoriumModel->insert($data);
+
+        return redirect()->to(base_url('superadmin/laboratorium'));
+    }
+
+
 
     /**
      * Riwayat peminjaman

@@ -78,3 +78,114 @@ in APPPATH\Controllers\SuperAdmin.php on line 21.
  2 SYSTEMPATH\CodeIgniter.php(471): CodeIgniter\CodeIgniter->createController()
  3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 20:11:46 --> Invalid file: superadmin/v_adminlab.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_adminlab.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_adminlab', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(62): view('superadmin/v_adminlab', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->adminlab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 20:11:56 --> Invalid file: superadmin/v_adminlab.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_adminlab.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_adminlab', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(62): view('superadmin/v_adminlab', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->adminlab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 20:21:23 --> Invalid file: superadmin/v_adminlab.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_adminlab.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_adminlab', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(62): view('superadmin/v_adminlab', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->adminlab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 20:34:59 --> Invalid file: superadmin/v_adminlab.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_adminlab.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_adminlab', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(68): view('superadmin/v_adminlab', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->adminlab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 20:43:17 --> Invalid file: superadmin/v_riwayat.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_riwayat.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_riwayat', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(100): view('superadmin/v_riwayat', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->riwayat()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 20:43:21 --> Invalid file: superadmin/v_adminlab.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_adminlab.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_adminlab', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(68): view('superadmin/v_adminlab', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->adminlab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 20:43:21 --> Invalid file: superadmin/v_riwayat.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_riwayat.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_riwayat', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(100): view('superadmin/v_riwayat', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->riwayat()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 20:43:22 --> Invalid file: superadmin/v_riwayat.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_riwayat.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_riwayat', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(100): view('superadmin/v_riwayat', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->riwayat()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-08 20:43:23 --> Invalid file: superadmin/v_adminlab.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_adminlab.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_adminlab', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(68): view('superadmin/v_adminlab', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->adminlab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-12-08 21:00:40 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`db_peminjamanlab`.`laboratorium`, CONSTRAINT `laboratorium_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `la...', 0)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `la...')
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `la...')
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `la...', Array, false)
+#4 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(303): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(750): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(699): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\SuperAdmin.php(108): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\SuperAdmin->simpanLaboratorium()
+#9 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+#10 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+ERROR - 2025-12-08 22:34:41 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`db_peminjamanlab`.`laboratorium`, CONSTRAINT `laboratorium_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `la...', 0)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `la...')
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `la...')
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `la...', Array, false)
+#4 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(303): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(750): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(699): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\SuperAdmin.php(119): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\SuperAdmin->simpanLaboratorium()
+#9 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+#10 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}

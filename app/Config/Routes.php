@@ -17,7 +17,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('Auth');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -38,16 +38,31 @@ $routes->set404Override();
 $routes->get('/', 'Auth::login');
 $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::doLogin');
-
 $routes->get('/logout', 'Auth::logout');
 
 $routes->get('/user', 'User::index');
 $routes->get('/admin', 'Admin::index');
+
 $routes->get('/superadmin', 'SuperAdmin::index');
-$routes->get('superadmin/laboratorium', 'SuperAdmin::laboratorium');
-$routes->get('superadmin/adminlab', 'SuperAdmin::adminlab');
-$routes->get('superadmin/tambahadmin', 'SuperAdmin::tambahAdmin');
-$routes->post('superadmin/simpanadmin', 'SuperAdmin::simpanAdmin');
+$routes->get('/superadmin/home', 'SuperAdmin::home');
+$routes->get('/superadmin/laboratorium', 'SuperAdmin::laboratorium');
+$routes->get('/superadmin/adminlab', 'SuperAdmin::adminlab');
+$routes->get('/superadmin/tambahadmin', 'SuperAdmin::tambahAdmin');
+$routes->post('/superadmin/simpanadmin', 'SuperAdmin::simpanAdmin');
+
+$routes->get('/superadmin/tambahLaboratorium', 'SuperAdmin::tambahLaboratorium');
+$routes->post('/superadmin/simpanLaboratorium', 'SuperAdmin::simpanLaboratorium');
+
+$routes->get('/superadmin/riwayat', 'SuperAdmin::riwayat');
+$routes->get('superadmin/detailLaboratorium/(:num)', 'SuperAdmin::detailLaboratorium/$1');
+
+$routes->get('superadmin/hapusLaboratorium/(:num)', 'SuperAdmin::hapusLaboratorium/$1');
+$routes->match(['get', 'post'], 'superadmin/gantiAdmin/(:num)', 'SuperAdmin::gantiAdmin/$1');
+
+$routes->get('superadmin/editLaboratorium/(:num)', 'SuperAdmin::editLaboratorium/$1');
+$routes->post('superadmin/updateLaboratorium/(:num)', 'SuperAdmin::updateLaboratorium/$1');
+
+
 
 
 /*
