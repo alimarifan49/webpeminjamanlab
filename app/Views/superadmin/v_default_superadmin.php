@@ -1,4 +1,3 @@
-
 <?= $this->extend('superadmin/v_dashboard') ?>
 
 <?= $this->section('content') ?>
@@ -6,7 +5,7 @@
     <h2>Selamat datang, SuperAdmin!</h2>
     <p>Pilih menu di bawah untuk mengelola laboratorium, admin lab, dan melihat riwayat peminjaman.</p>
 
-    <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
 
         <div class="col d-flex">
             <div class="card text-center p-3 h-100 w-100">
@@ -26,17 +25,6 @@
                 <a href="<?= base_url('superadmin/adminlab') ?>" 
                    class="btn btn-primary btn-sm mt-auto">
                     Lihat Admin
-                </a>
-            </div>
-        </div>
-
-        <div class="col d-flex">
-            <div class="card text-center p-3 h-100 w-100">
-                <h5>Tambah Admin</h5>
-                <p>Tambahkan akun admin baru</p>
-                <a href="<?= base_url('superadmin/tambahAdmin') ?>" 
-                   class="btn btn-success btn-sm mt-auto">
-                    Tambah Admin
                 </a>
             </div>
         </div>

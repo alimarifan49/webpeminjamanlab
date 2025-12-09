@@ -36,10 +36,7 @@
                     <a class="nav-link" href="<?= base_url('superadmin/adminlab') ?>">Admin Lab</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('superadmin/tambahAdmin') ?>">Tambah Admin</a>
-                </li>
-
+              
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('superadmin/riwayat') ?>">Riwayat</a>
                 </li>
