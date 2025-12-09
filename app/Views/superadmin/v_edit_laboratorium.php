@@ -21,12 +21,16 @@
 
     <div class="mb-3">
         <label class="form-label">Tipe Laboratorium</label>
-        <select name="tipe" class="form-select" required>
-            <option value="kimia" <?= $laboratorium['tipe'] == 'kimia' ? 'selected' : '' ?>>Kimia</option>
-            <option value="biologi" <?= $laboratorium['tipe'] == 'biologi' ? 'selected' : '' ?>>Biologi</option>
-            <option value="komputer" <?= $laboratorium['tipe'] == 'komputer' ? 'selected' : '' ?>>Komputer</option>
-            <option value="fisika" <?= $laboratorium['tipe'] == 'fisika' ? 'selected' : '' ?>>Fisika</option>
-        </select>
+       <select name="tipe_id" class="form-select" required>
+    <option value="">-- Pilih Tipe --</option>
+    <?php foreach($tipeList as $tipe): ?>
+        <option value="<?= $tipe['id'] ?>" 
+            <?= (isset($laboratorium['tipe_id']) && $laboratorium['tipe_id'] == $tipe['id']) ? 'selected' : '' ?>>
+            <?= esc($tipe['nama_tipe']) ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+
     </div>
 
     <div class="mb-3">

@@ -64,6 +64,17 @@ $routes->post('superadmin/updateLaboratorium/(:num)', 'SuperAdmin::updateLaborat
 $routes->get('superadmin/exportExcel', 'SuperAdmin::exportExcel');
 $routes->get('superadmin/exportPDF', 'SuperAdmin::exportPDF');
 
+$routes->get('superadmin/tipeLaboratorium', 'TipeLaboratorium::index');
+$routes->post('superadmin/tipeLaboratorium/simpan', 'TipeLaboratorium::simpan');
+$routes->post('superadmin/tipeLaboratorium/update/(:num)', 'TipeLaboratorium::update/$1');
+$routes->get('superadmin/tipeLaboratorium/hapus/(:num)', 'TipeLaboratorium::hapus/$1');
+$routes->get('superadmin/tipeLaboratorium', 'SuperAdmin::tipeLaboratorium');
+$routes->get('superadmin/tipeLaboratorium/tambah', 'SuperAdmin::tambahTipe');
+$routes->post('superadmin/tipeLaboratorium/simpan', 'SuperAdmin::simpanTipe');
+$routes->get('superadmin/tipeLaboratorium/edit/(:num)', 'SuperAdmin::editTipe/$1');
+$routes->post('superadmin/tipeLaboratorium/update/(:num)', 'SuperAdmin::updateTipe/$1');
+$routes->get('superadmin/tipeLaboratorium/hapus/(:num)', 'SuperAdmin::hapusTipe/$1');
+
 
 
 

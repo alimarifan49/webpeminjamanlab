@@ -34,3 +34,111 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
  5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
  6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 02:00:58 --> Undefined array key "tipe"
+in APPPATH\Views\superadmin\v_laboratorium.php on line 35.
+ 1 APPPATH\Views\superadmin\v_laboratorium.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "tipe"', 'APPPATH\\Views\\superadmin\\v_laboratorium.php', 35)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\superadmin\\v_laboratorium.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_laboratorium', [], true)
+ 5 APPPATH\Controllers\SuperAdmin.php(75): view('superadmin/v_laboratorium', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->laboratorium()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 02:01:03 --> Undefined array key "tipe"
+in APPPATH\Views\superadmin\v_laboratorium.php on line 35.
+ 1 APPPATH\Views\superadmin\v_laboratorium.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "tipe"', 'APPPATH\\Views\\superadmin\\v_laboratorium.php', 35)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\superadmin\\v_laboratorium.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_laboratorium', [], true)
+ 5 APPPATH\Controllers\SuperAdmin.php(75): view('superadmin/v_laboratorium', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->laboratorium()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 02:02:06 --> Class "App\Controllers\TipeLaboratoriumModel" not found
+in APPPATH\Controllers\SuperAdmin.php on line 202.
+ 1 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->tambahLaboratorium()
+ 2 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-12-09 02:04:38 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`db_peminjamanlab`.`laboratorium`, CONSTRAINT `fk_tipe_lab` FOREIGN KEY (`tipe_id`) REFERENCES `tipe_laboratorium` (`id`) ON UPDATE CASCADE) in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `la...', 0)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `la...')
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `la...')
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `la...', Array, false)
+#4 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(303): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(750): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(699): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\SuperAdmin.php(234): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\SuperAdmin->simpanLaboratorium()
+#9 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+#10 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+ERROR - 2025-12-09 02:05:36 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`db_peminjamanlab`.`laboratorium`, CONSTRAINT `fk_tipe_lab` FOREIGN KEY (`tipe_id`) REFERENCES `tipe_laboratorium` (`id`) ON UPDATE CASCADE) in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `la...', 0)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `la...')
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `la...')
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `la...', Array, false)
+#4 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(303): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(750): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(699): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\SuperAdmin.php(234): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\SuperAdmin->simpanLaboratorium()
+#9 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+#10 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-12-09 02:10:20 --> Call to undefined method App\Models\LaboratoriumModel::getLaboratoriumWithAdmin
+in SYSTEMPATH\Model.php on line 811.
+ 1 APPPATH\Controllers\SuperAdmin.php(295): CodeIgniter\Model->__call('getLaboratoriumWithAdmin', [])
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->exportPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 02:11:34 --> Call to undefined method App\Models\LaboratoriumModel::getLaboratoriumWithAdmin
+in SYSTEMPATH\Model.php on line 811.
+ 1 APPPATH\Controllers\SuperAdmin.php(256): CodeIgniter\Model->__call('getLaboratoriumWithAdmin', [])
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->exportExcel()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 02:12:08 --> Call to undefined method App\Models\LaboratoriumModel::getLaboratoriumWithAdmin
+in SYSTEMPATH\Model.php on line 811.
+ 1 APPPATH\Controllers\SuperAdmin.php(295): CodeIgniter\Model->__call('getLaboratoriumWithAdmin', [])
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->exportPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 02:12:23 --> Call to undefined method App\Models\LaboratoriumModel::getLaboratoriumWithAdmin
+in SYSTEMPATH\Model.php on line 811.
+ 1 APPPATH\Controllers\SuperAdmin.php(295): CodeIgniter\Model->__call('getLaboratoriumWithAdmin', [])
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->exportPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 02:15:21 --> Undefined array key "tipe"
+in APPPATH\Views\superadmin\pdf_laboratorium.php on line 55.
+ 1 APPPATH\Views\superadmin\pdf_laboratorium.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "tipe"', 'APPPATH\\Views\\superadmin\\pdf_laboratorium.php', 55)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\superadmin\\pdf_laboratorium.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/pdf_laboratorium', [], true)
+ 5 APPPATH\Controllers\SuperAdmin.php(307): view('superadmin/pdf_laboratorium', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->exportPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 02:20:21 --> Undefined array key "nama_tipe"
+in APPPATH\Views\superadmin\v_laboratorium.php on line 35.
+ 1 APPPATH\Views\superadmin\v_laboratorium.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_tipe"', 'APPPATH\\Views\\superadmin\\v_laboratorium.php', 35)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\superadmin\\v_laboratorium.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_laboratorium', [], true)
+ 5 APPPATH\Controllers\SuperAdmin.php(79): view('superadmin/v_laboratorium', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->laboratorium()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

@@ -52,7 +52,7 @@
                 <td><?= esc($lab['nama_lab']) ?></td>
                 <td><?= esc($lab['lokasi']) ?></td>
                 <td>Rp <?= number_format($lab['harga_sewa'],0,',','.') ?></td>
-                <td><?= esc($lab['tipe']) ?></td>
+                <td><?= esc($lab['tipe_id']) ?></td>
                 <td><?= esc($lab['admin_nama']) ?> | <?= esc($lab['admin_nim']) ?></td>
             </tr>
             <?php endforeach; ?>

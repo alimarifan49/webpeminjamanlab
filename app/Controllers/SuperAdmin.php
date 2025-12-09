@@ -8,6 +8,10 @@ use App\Models\PeminjamanModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Dompdf\Dompdf;
+use App\Models\TipeLaboratoriumModel;
+
+
+
 
 class SuperAdmin extends BaseController
 {
@@ -51,29 +55,17 @@ class SuperAdmin extends BaseController
     /**
      * Daftar laboratorium
      */
-    public function laboratorium()
+   public function laboratorium()
     {
         $laboratoriumModel = new LaboratoriumModel();
-        $adminModel = new UserModel(); // asumsikan model user ada
 
-        $labs = $laboratoriumModel->findAll();
-
-        // Tambahkan info admin
-        foreach ($labs as &$lab) {
-            if (!empty($lab['admin_id'])) {
-                $admin = $adminModel->find($lab['admin_id']);
-                $lab['admin_nama'] = $admin['nama'] ?? '-';
-                $lab['admin_nim'] = $admin['nim'] ?? '-';
-            } else {
-                $lab['admin_nama'] = '-';
-                $lab['admin_nim'] = '-';
-            }
-        }
-
-        $data['laboratorium'] = $labs;
+        // Ambil semua laboratorium beserta nama admin dan nama tipe lab
+        $data['laboratorium'] = $laboratoriumModel->getLaboratoriumWithAdminAndTipe();
 
         return view('superadmin/v_laboratorium', $data);
     }
+
+    
     // Hapus laboratorium
 public function hapusLaboratorium($id)
 {
@@ -118,33 +110,50 @@ public function gantiAdmin($id)
     $data['adminList'] = $userModel->where('role', 2)->findAll(); // role 2 = admin lab
     return view('superadmin/v_ganti_admin', $data);
 }
-    public function editLaboratorium($id)
-{
-    $laboratoriumModel = new LaboratoriumModel();
-    $data['laboratorium'] = $laboratoriumModel->find($id);
 
-    // Ambil list admin untuk dropdown
-    $userModel = new UserModel();
-    $data['adminList'] = $userModel->where('role', 2)->findAll(); // Role 2 = Admin Lab
 
-    return view('superadmin/v_edit_laboratorium', $data);
-}
 
+// Halaman edit laboratorium
+        public function editLaboratorium($id)
+        {
+            $laboratoriumModel = new LaboratoriumModel();
+            $userModel = new UserModel();
+            $tipeModel = new TipeLaboratoriumModel();
+
+            // Ambil data laboratorium yang diedit
+            $laboratorium = $laboratoriumModel->find($id);
+            if (!$laboratorium) {
+                return redirect()->to(base_url('superadmin/laboratorium'))
+                                ->with('error', 'Laboratorium tidak ditemukan.');
+            }
+
+            // Ambil list admin untuk dropdown
+            $adminList = $userModel->where('role', 2)->findAll();
+
+            // Ambil list tipe laboratorium untuk dropdown
+            $tipeList = $tipeModel->findAll();
+
+            // Kirim data ke view
+            return view('superadmin/v_edit_laboratorium', [
+                'laboratorium' => $laboratorium,
+                'adminList'    => $adminList,
+                'tipeList'     => $tipeList
+            ]);
+        }
 public function updateLaboratorium($id)
 {
     $laboratoriumModel = new LaboratoriumModel();
 
-    $data = [
-        'nama_lab'   => $this->request->getPost('nama_lab'),
-        'lokasi'     => $this->request->getPost('lokasi'),
-        'harga_sewa' => $this->request->getPost('harga_sewa'),
-        'tipe'       => $this->request->getPost('tipe'),
-        'admin_id'   => $this->request->getPost('admin_id'),
-    ];
+  $data = [
+    'nama_lab'   => $this->request->getPost('nama_lab'),
+    'lokasi'     => $this->request->getPost('lokasi'),
+    'harga_sewa' => $this->request->getPost('harga_sewa'),
+    'tipe_id'    => $this->request->getPost('tipe_id'),
+    'admin_id'   => $this->request->getPost('admin_id'),
+];
 
-    $laboratoriumModel->update($id, $data);
-
-    return redirect()->to(base_url('superadmin/laboratorium'));
+$laboratoriumModel->update($id, $data);
+return redirect()->to(base_url('superadmin/laboratorium'));
 }
 
     /**
@@ -182,33 +191,39 @@ public function updateLaboratorium($id)
     public function tambahLaboratorium()
     {
         $userModel = new UserModel();
+        $tipeModel = new TipeLaboratoriumModel();
 
-        // Ambil semua user yang role-nya admin lab (role = 'adminlab' atau 2)
-        $adminList = $userModel->where('role', 'admin')->findAll();
+        // Ambil semua user yang role-nya admin lab (role = 2)
+        $adminList = $userModel->where('role', 2)->findAll();
 
-        // Kirim ke view
+        // Ambil semua tipe laboratorium
+        $tipeList = $tipeModel->findAll();
+
+        // Kirim data ke view
         return view('superadmin/v_tambah_laboratorium', [
-            'adminList' => $adminList
+            'adminList' => $adminList,
+            'tipeList'  => $tipeList
         ]);
     }
-
 
     public function simpanLaboratorium()
     {
         $laboratoriumModel = new LaboratoriumModel();
 
         $data = [
-            'nama_lab' => $this->request->getPost('nama_lab'),
-            'lokasi'   => $this->request->getPost('lokasi'),
+            'nama_lab'   => $this->request->getPost('nama_lab'),
+            'lokasi'     => $this->request->getPost('lokasi'),
             'harga_sewa' => $this->request->getPost('harga_sewa'),
-            'tipe'     => $this->request->getPost('tipe'),
-            'admin_id' => $this->request->getPost('admin_id'),
+            'tipe_id'    => $this->request->getPost('tipe_id'), // <--- perhatikan
+            'admin_id'   => $this->request->getPost('admin_id'),
         ];
 
         $laboratoriumModel->insert($data);
 
-        return redirect()->to(base_url('superadmin/laboratorium'));
+        return redirect()->to(base_url('superadmin/laboratorium'))
+                        ->with('success', 'Laboratorium berhasil ditambahkan.');
     }
+
 
 
 
@@ -223,10 +238,10 @@ public function updateLaboratorium($id)
     }
 
 
-    public function exportExcel()
+        public function exportExcel()
     {
-        $laboratoriumModel = new \App\Models\LaboratoriumModel();
-        $labs = $laboratoriumModel->getLaboratoriumWithAdmin(); // ambil nama & nim admin
+        $laboratoriumModel = new LaboratoriumModel();
+        $labs = $laboratoriumModel->getLaboratoriumWithAdminAndTipe(); // method baru
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -246,7 +261,7 @@ public function updateLaboratorium($id)
                 ->setCellValue('B'.$row, $lab['nama_lab'])
                 ->setCellValue('C'.$row, $lab['lokasi'])
                 ->setCellValue('D'.$row, $lab['harga_sewa'])
-                ->setCellValue('E'.$row, $lab['tipe'])
+                ->setCellValue('E'.$row, $lab['nama_tipe']) // kolom tipe dari join tipe_laboratorium
                 ->setCellValue('F'.$row, $lab['admin_nama'] . ' | ' . $lab['admin_nim']);
             $row++;
         }
@@ -262,10 +277,10 @@ public function updateLaboratorium($id)
         exit; // pastikan eksekusi berhenti setelah output
     }
 
-        public function exportPDF()
+    public function exportPDF()
     {
-        $laboratoriumModel = new \App\Models\LaboratoriumModel();
-        $laboratorium = $laboratoriumModel->getLaboratoriumWithAdmin(); // pastikan join admin
+        $laboratoriumModel = new LaboratoriumModel();
+        $laboratorium = $laboratoriumModel->getLaboratoriumWithAdminAndTipe(); // method baru
 
         $admin = [
             'nama' => session()->get('nama') ?? 'SuperAdmin',
@@ -280,7 +295,7 @@ public function updateLaboratorium($id)
         $html = view('superadmin/pdf_laboratorium', $data);
 
         $dompdf = new Dompdf();
-        // Ukuran Folio dalam pt: width 612, height 936
+        // Ukuran Folio: width 612pt, height 936pt
         $dompdf->setPaper([0,0,612,936], 'portrait');
         $dompdf->loadHtml($html);
         $dompdf->render();
