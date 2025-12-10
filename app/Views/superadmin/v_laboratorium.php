@@ -6,6 +6,8 @@
 <div class="mb-3">
     <a href="<?= base_url('superadmin') ?>" class="btn btn-secondary">Kembali ke Dashboard</a>
     <a href="<?= base_url('superadmin/tambahLaboratorium') ?>" class="btn btn-primary">Tambah Laboratorium</a>
+    <a href="<?= base_url('superadmin/tipeLab') ?>" class="btn btn-info">Kelola Tipe Lab</a>
+
     <a href="<?= base_url('superadmin/exportExcel') ?>" class="btn btn-success">Export Excel</a>
     <a href="<?= base_url('superadmin/exportPDF') ?>" class="btn btn-danger">Export PDF</a>
 </div>

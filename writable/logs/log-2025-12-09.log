@@ -169,3 +169,110 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
  5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
  6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 02:44:30 --> Invalid file: superadmin/v_adminlab.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_adminlab.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_adminlab', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(166): view('superadmin/v_adminlab', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->adminlab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-12-09 20:48:24 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:170
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php(170): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db_peminjamanla...', 3306, '', 0)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(624): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\Auth.php(39): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\webpeminjamanlab\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\webpeminjamanlab\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\webpeminjamanlab\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\webpeminjamanlab\system\BaseModel.php(624): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\webpeminjamanlab\app\Controllers\Auth.php(39): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+#7 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\webpeminjamanlab\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\webpeminjamanlab\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-12-09 20:48:24 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `nim` = :nim:
+OR `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(39): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Auth->doLogin()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 21:52:07 --> Invalid file: superadmin/tipe_lab/index.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/tipe_lab/index.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/tipe_lab/index', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(311): view('superadmin/tipe_lab/index', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->tipeLab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 21:54:28 --> Invalid file: superadmin/tipe_lab/index.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/tipe_lab/index.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/tipe_lab/index', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(311): view('superadmin/tipe_lab/index', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->tipeLab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 21:56:03 --> Invalid file: superadmin/tipe_lab/index.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/tipe_lab/index.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/tipe_lab/index', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(312): view('superadmin/tipe_lab/index', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->tipeLab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 21:57:00 --> Invalid file: superadmin/tipe_lab/index.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/tipe_lab/index.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/tipe_lab/index', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(312): view('superadmin/tipe_lab/index', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->tipeLab()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 21:59:18 --> Invalid file: superadmin/tipe_lab/tambah.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/tipe_lab/tambah.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/tipe_lab/tambah', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(318): view('superadmin/tipe_lab/tambah')
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->tambahTipe()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-09 21:59:21 --> Invalid file: superadmin/tipe_lab/edit.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/tipe_lab/edit.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/tipe_lab/edit', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(343): view('superadmin/tipe_lab/edit', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->editTipe('5')
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

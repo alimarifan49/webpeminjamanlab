@@ -37,7 +37,7 @@ public $baseURL = 'http://localhost:4040/webpeminjamanlab/';
      *
      * @var string
      */
-    public $indexPage = 'index.php';
+    public $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------

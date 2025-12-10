@@ -302,4 +302,79 @@ return redirect()->to(base_url('superadmin/laboratorium'));
         $dompdf->stream('pdf_laboratorium.pdf', ['Attachment' => true]);
     }
 
+
+/////tipe LAB
+        public function tipeLab()
+        {
+            $model = new TipeLaboratoriumModel();
+            $data['tipe'] = $model->findAll();
+
+            return view('superadmin/v_tipe_laboratorium', $data);
+        }
+
+
+        public function tambahTipe()
+        {
+            return view('superadmin/v_tambah_tipe');
+        }
+
+        public function simpanTipe()
+        {
+            $model = new TipeLaboratoriumModel();
+
+            $model->insert([
+                'nama_tipe' => $this->request->getPost('nama_tipe')
+            ]);
+
+            return redirect()->to('/superadmin/tipeLab')
+                            ->with('success', 'Tipe laboratorium berhasil ditambahkan');
+        }
+
+        public function editTipe($id)
+        {
+            $model = new TipeLaboratoriumModel();
+            $tipe = $model->find($id);
+
+            if (!$tipe) {
+                return redirect()->to('/superadmin/tipeLab')
+                                ->with('error', 'Data tipe laboratorium tidak ditemukan');
+            }
+
+            return view('superadmin/v_edit_tipe', ['tipe' => $tipe]);
+        }
+
+        public function updateTipe($id)
+        {
+            $model = new TipeLaboratoriumModel();
+
+            if (!$model->find($id)) {
+                return redirect()->to('/superadmin/tipeLab')
+                                ->with('error', 'Data tipe laboratorium tidak ditemukan');
+            }
+
+            $model->update($id, [
+                'nama_tipe' => $this->request->getPost('nama_tipe')
+            ]);
+
+            return redirect()->to('/superadmin/tipeLab')
+                            ->with('success', 'Tipe laboratorium berhasil diperbarui');
+        }
+
+
+        public function hapusTipe($id)
+        {
+            $model = new TipeLaboratoriumModel();
+
+            if (!$model->find($id)) {
+                return redirect()->to('/superadmin/tipeLab')
+                                ->with('error', 'Data tipe laboratorium tidak ditemukan');
+            }
+
+            $model->delete($id);
+
+            return redirect()->to('/superadmin/tipeLab')
+                            ->with('success', 'Tipe laboratorium berhasil dihapus');
+        }
+
+
 }

@@ -1,15 +1,13 @@
 <?= $this->extend('superadmin/v_dashboard') ?>
 <?= $this->section('content') ?>
 
-<h2>Daftar Tipe Laboratorium</h2>
+<h3>Daftar Tipe Laboratorium</h3>
 
-<form action="<?= base_url('superadmin/tipeLaboratorium/simpan') ?>" method="post">
-    <input type="text" name="nama_tipe" placeholder="Nama Tipe" required>
-    <button type="submit">Tambah</button>
-</form>
+<a href="<?= base_url('superadmin/laboratorium') ?>" class="btn btn-secondary mb-3">Kembali</a>
+<a href="<?= base_url('superadmin/tambahTipe') ?>" class="btn btn-primary mb-3">Tambah Tipe</a>
 
-<table class="table table-bordered mt-3">
-    <thead>
+<table class="table table-bordered">
+    <thead class="table-dark">
         <tr>
             <th>#</th>
             <th>Nama Tipe</th>
@@ -17,16 +15,22 @@
         </tr>
     </thead>
     <tbody>
-        <?php $i=1; foreach($tipeLabs as $tipe): ?>
+        <?php $i = 1; foreach ($tipe as $t): ?>
         <tr>
             <td><?= $i++ ?></td>
-            <td><?= esc($tipe['nama_tipe']) ?></td>
+            <td><?= esc($t['nama_tipe']) ?></td>
             <td>
-                <a href="<?= base_url('superadmin/tipeLaboratorium/update/'.$tipe['id']) ?>">Edit</a>
-                <a href="<?= base_url('superadmin/tipeLaboratorium/hapus/'.$tipe['id']) ?>" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+                <a href="<?= base_url('superadmin/editTipe/' . $t['id']) ?>" class="btn btn-sm btn-info">
+                    Edit
+                </a>
+                <a href="<?= base_url('superadmin/hapusTipe/' . $t['id']) ?>" 
+                   class="btn btn-sm btn-danger"
+                   onclick="return confirm('Hapus tipe ini?')">
+                    Hapus
+                </a>
             </td>
         </tr>
-        <?php endforeach; ?>
+        <?php endforeach ?>
     </tbody>
 </table>
 

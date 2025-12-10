@@ -46,7 +46,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php $i=1; foreach ($laboratorium as $lab): ?>
+            <?php $i = 1; foreach ($laboratorium as $lab): ?>
             <tr>
                 <td><?= $i++ ?></td>
                 <td><?= esc($lab['nama_lab']) ?></td>
@@ -62,15 +62,30 @@
 <div class="footer-right">
     <p>
         <?php 
-        setlocale(LC_TIME, 'id_ID.UTF-8'); 
-        echo strftime('%A, %e %B %Y'); 
+        // Pastikan timezone tepat
+        date_default_timezone_set('Asia/Jakarta');
+
+        // Formatter tanggal Bahasa Indonesia
+        $formatter = new IntlDateFormatter(
+            'id_ID',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::NONE,
+            'Asia/Jakarta',
+            IntlDateFormatter::GREGORIAN,
+            "EEEE, d MMMM yyyy"
+        );
+
+        echo $formatter->format(time());
         ?>
     </p>
+
     <p>Mengetahui</p>
     <br><br><br>
+
     <p>_________________________</p>
     <p><?= esc($admin['nama']) ?></p>
     <p><?= esc($admin['nim']) ?></p>
 </div>
+
 </body>
 </html>

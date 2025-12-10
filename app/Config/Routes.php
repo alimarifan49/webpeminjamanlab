@@ -32,51 +32,53 @@ $routes->set404Override();
  * Route Definitions
  * --------------------------------------------------------------------
  */
-
-// We get a performance increase by specifying the default
-// route since we don't have to scan directories.
+// Default routes
 $routes->get('/', 'Auth::login');
 $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::doLogin');
 $routes->get('/logout', 'Auth::logout');
 
+// User & Admin
 $routes->get('/user', 'User::index');
 $routes->get('/admin', 'Admin::index');
 
+// Superadmin Home & Dashboard
 $routes->get('/superadmin', 'SuperAdmin::index');
 $routes->get('/superadmin/home', 'SuperAdmin::home');
+
+// Laboratorium CRUD
 $routes->get('/superadmin/laboratorium', 'SuperAdmin::laboratorium');
+$routes->get('/superadmin/tambahLaboratorium', 'SuperAdmin::tambahLaboratorium');
+$routes->post('/superadmin/simpanLaboratorium', 'SuperAdmin::simpanLaboratorium');
+$routes->get('superadmin/detailLaboratorium/(:num)', 'SuperAdmin::detailLaboratorium/$1');
+$routes->get('superadmin/editLaboratorium/(:num)', 'SuperAdmin::editLaboratorium/$1');
+$routes->post('superadmin/updateLaboratorium/(:num)', 'SuperAdmin::updateLaboratorium/$1');
+$routes->get('superadmin/hapusLaboratorium/(:num)', 'SuperAdmin::hapusLaboratorium/$1');
+$routes->match(['get', 'post'], 'superadmin/gantiAdmin/(:num)', 'SuperAdmin::gantiAdmin/$1');
+
+$routes->get('superadmin/exportExcel', 'SuperAdmin::exportExcel');
+$routes->get('superadmin/exportPDF', 'SuperAdmin::exportPDF');
+
+// Admin Lab CRUD
 $routes->get('/superadmin/adminlab', 'SuperAdmin::adminlab');
 $routes->get('/superadmin/tambahadmin', 'SuperAdmin::tambahAdmin');
 $routes->post('/superadmin/simpanadmin', 'SuperAdmin::simpanAdmin');
 
-$routes->get('/superadmin/tambahLaboratorium', 'SuperAdmin::tambahLaboratorium');
-$routes->post('/superadmin/simpanLaboratorium', 'SuperAdmin::simpanLaboratorium');
-
+// Riwayat
 $routes->get('/superadmin/riwayat', 'SuperAdmin::riwayat');
-$routes->get('superadmin/detailLaboratorium/(:num)', 'SuperAdmin::detailLaboratorium/$1');
-
-$routes->get('superadmin/hapusLaboratorium/(:num)', 'SuperAdmin::hapusLaboratorium/$1');
-$routes->match(['get', 'post'], 'superadmin/gantiAdmin/(:num)', 'SuperAdmin::gantiAdmin/$1');
-
-$routes->get('superadmin/editLaboratorium/(:num)', 'SuperAdmin::editLaboratorium/$1');
-$routes->post('superadmin/updateLaboratorium/(:num)', 'SuperAdmin::updateLaboratorium/$1');
-$routes->get('superadmin/exportExcel', 'SuperAdmin::exportExcel');
-$routes->get('superadmin/exportPDF', 'SuperAdmin::exportPDF');
-
-$routes->get('superadmin/tipeLaboratorium', 'TipeLaboratorium::index');
-$routes->post('superadmin/tipeLaboratorium/simpan', 'TipeLaboratorium::simpan');
-$routes->post('superadmin/tipeLaboratorium/update/(:num)', 'TipeLaboratorium::update/$1');
-$routes->get('superadmin/tipeLaboratorium/hapus/(:num)', 'TipeLaboratorium::hapus/$1');
-$routes->get('superadmin/tipeLaboratorium', 'SuperAdmin::tipeLaboratorium');
-$routes->get('superadmin/tipeLaboratorium/tambah', 'SuperAdmin::tambahTipe');
-$routes->post('superadmin/tipeLaboratorium/simpan', 'SuperAdmin::simpanTipe');
-$routes->get('superadmin/tipeLaboratorium/edit/(:num)', 'SuperAdmin::editTipe/$1');
-$routes->post('superadmin/tipeLaboratorium/update/(:num)', 'SuperAdmin::updateTipe/$1');
-$routes->get('superadmin/tipeLaboratorium/hapus/(:num)', 'SuperAdmin::hapusTipe/$1');
 
 
+// =======================================================================
+// 🔥 BAGIAN INI YANG BENTROK — SUDAH DIBERSIHKAN & DISATUKAN
+// CRUD Tipe Laboratorium (SuperAdmin)
+// =======================================================================
 
+$routes->get('/superadmin/tipeLab', 'SuperAdmin::tipeLab');                  // list tipe lab
+$routes->get('/superadmin/tambahTipe', 'SuperAdmin::tambahTipe');           // form tambah
+$routes->post('/superadmin/simpanTipe', 'SuperAdmin::simpanTipe');          // simpan baru
+$routes->get('/superadmin/editTipe/(:num)', 'SuperAdmin::editTipe/$1');     // form edit
+$routes->post('/superadmin/updateTipe/(:num)', 'SuperAdmin::updateTipe/$1'); // update
+$routes->get('/superadmin/hapusTipe/(:num)', 'SuperAdmin::hapusTipe/$1');    // delete
 
 /*
  * --------------------------------------------------------------------
