@@ -14,7 +14,7 @@
             margin-bottom: 50px;
         }
         table, th, td { 
-            border: 1px solid black; 
+            border: 0.3px solid #555; /* versi paling tipis + warna mendekati hitam */
         }
         th, td { 
             padding: 5px; 

@@ -14,6 +14,10 @@
 
 <?php if (!empty($laboratorium) && is_array($laboratorium)) : ?>
     <div class="table-responsive">
+        <input type="text" id="tableSearch" 
+       class="form-control mb-3" 
+       placeholder="Cari laboratorium...">
+
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
@@ -55,5 +59,87 @@
 <?php else : ?>
     <p class="text-muted">Belum ada laboratorium yang terdaftar.</p>
 <?php endif; ?>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const table = document.querySelector(".table");
+    const headers = table.querySelectorAll("th");
+    const tbody = table.querySelector("tbody");
+    const searchInput = document.getElementById("tableSearch");
+    let sortDirections = {};
+
+    function updateRowNumbers() {
+        let counter = 1;
+        Array.from(tbody.querySelectorAll("tr")).forEach(row => {
+            if (row.style.display !== "none") {
+                row.children[0].innerText = counter++;
+            } else {
+                row.children[0].innerText = "";
+            }
+        });
+    }
+
+    function buildRowsData() {
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+        return rows.map((row) => {
+            const cells = Array.from(row.children).map(td => {
+                const raw = td.innerText.trim();
+                const textLower = raw.toLowerCase();
+                let num = null;
+
+                // parsing angka jika ada Rp atau angka lain
+                let clean = raw.replace(/Rp/gi,'').replace(/\s/g,'').replace(/\./g,'').replace(/,/g,'.');
+                if(clean !== '' && !isNaN(clean)) num = parseFloat(clean);
+
+                return { rawText: raw, textLower: textLower, num: num };
+            });
+            return { element: row, cells: cells };
+        });
+    }
+
+    function sortTable(columnIndex) {
+        const rowsData = buildRowsData();
+        const direction = sortDirections[columnIndex];
+
+        if(columnIndex === 0){
+            // kolom #: balik urutan saat klik
+            rowsData.reverse();
+        } else {
+            rowsData.sort((a, b) => {
+                const cellA = a.cells[columnIndex];
+                const cellB = b.cells[columnIndex];
+
+                if(cellA.num !== null && cellB.num !== null){
+                    return (cellA.num - cellB.num) * direction;
+                }
+                return cellA.textLower.localeCompare(cellB.textLower) * direction;
+            });
+        }
+
+        // append kembali baris ke tbody
+        rowsData.forEach(rd => tbody.appendChild(rd.element));
+        updateRowNumbers();
+        sortDirections[columnIndex] *= -1;
+    }
+
+    headers.forEach((header, index) => {
+        sortDirections[index] = 1;
+        header.style.cursor = "pointer";
+        header.addEventListener("click", () => sortTable(index));
+    });
+
+    searchInput.addEventListener("input", function() {
+        const filter = this.value.toLowerCase().trim();
+        Array.from(tbody.querySelectorAll("tr")).forEach(row => {
+            row.style.display = row.innerText.toLowerCase().includes(filter) ? "" : "none";
+        });
+        updateRowNumbers();
+    });
+
+    updateRowNumbers(); // inisialisasi nomor urut
+});
+
+</script>
+
+
 
 <?= $this->endSection() ?>
