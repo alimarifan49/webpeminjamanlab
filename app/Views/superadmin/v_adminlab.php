@@ -34,6 +34,8 @@
                     <th>Email</th>
                     <th>Alamat</th>
                     <th>Semester</th>
+                    <th>Dibuat Pada</th>
+
                     <th>Action</th>
                 </tr>
             </thead>
@@ -48,6 +50,8 @@
                             <td><?= esc($admin['email']) ?></td>
                             <td><?= esc($admin['alamat']) ?></td>
                             <td><?= esc($admin['semester']) ?></td>
+                            <td><?= strftime('%d %B %Y %H:%M', strtotime($admin['created_at'])) ?> WIB</td>
+
                             <td>
                                 <a href="<?= base_url('superadmin/editadmin/' . $admin['id']) ?>" class="btn btn-warning btn-sm">Edit</a>
                                 <a href="<?= base_url('superadmin/deleteadmin/' . $admin['id']) ?>" 

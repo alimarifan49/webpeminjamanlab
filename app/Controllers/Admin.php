@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
+
+use App\Controllers\BaseController;
 
 class Admin extends BaseController
 {
@@ -8,15 +10,17 @@ class Admin extends BaseController
     {
         $session = session();
 
-        // Cek apakah admin sudah login dan role-nya 'admin'
+        // Cek login & role admin
         if (!$session->get('logged_in') || $session->get('role') !== 'admin') {
             return redirect()->to(base_url('login'));
         }
 
-        // Ambil nama admin dari session
-        $data['nama'] = $session->get('nama') ?? 'Admin';
+        // Data dikirimkan ke view
+        $data = [
+            'nama' => $session->get('nama') ?? 'Admin'
+        ];
 
-        // Panggil view yang ada di app/Views/admin/dashboard_admin.php
-        return view('admin/v_dashboard_admin', $data);
+        // Pastikan view: app/Views/admin/dashboard_admin.php
+        return view('admin/dashboard_admin', $data);
     }
 }

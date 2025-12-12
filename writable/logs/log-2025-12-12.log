@@ -1,0 +1,9 @@
+CRITICAL - 2025-12-12 01:27:22 --> Invalid file: admin/v_dashboard_admin.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/v_dashboard_admin.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/v_dashboard_admin', [], true)
+ 3 APPPATH\Controllers\Admin.php(20): view('admin/v_dashboard_admin', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin->index()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

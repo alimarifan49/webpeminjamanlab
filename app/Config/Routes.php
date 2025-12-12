@@ -33,61 +33,92 @@ $routes->set404Override();
  * --------------------------------------------------------------------
  */
 // Default routes
+
+// =======================================================================
+// AUTH
+// =======================================================================
 $routes->get('/', 'Auth::login');
 $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::doLogin');
 $routes->get('/logout', 'Auth::logout');
 
-// User & Admin
+// =======================================================================
+// USER ROLE
+// =======================================================================
 $routes->get('/user', 'User::index');
-$routes->get('/admin', 'Admin::index');
 
-// Superadmin Home & Dashboard
+// =======================================================================
+// SUPERADMIN
+// =======================================================================
 $routes->get('/superadmin', 'SuperAdmin::index');
 $routes->get('/superadmin/home', 'SuperAdmin::home');
 
-// Laboratorium CRUD
+// CRUD Laboratorium
 $routes->get('/superadmin/laboratorium', 'SuperAdmin::laboratorium');
 $routes->get('/superadmin/tambahLaboratorium', 'SuperAdmin::tambahLaboratorium');
 $routes->post('/superadmin/simpanLaboratorium', 'SuperAdmin::simpanLaboratorium');
-$routes->get('superadmin/detailLaboratorium/(:num)', 'SuperAdmin::detailLaboratorium/$1');
-$routes->get('superadmin/editLaboratorium/(:num)', 'SuperAdmin::editLaboratorium/$1');
-$routes->post('superadmin/updateLaboratorium/(:num)', 'SuperAdmin::updateLaboratorium/$1');
-$routes->get('superadmin/hapusLaboratorium/(:num)', 'SuperAdmin::hapusLaboratorium/$1');
-$routes->match(['get', 'post'], 'superadmin/gantiAdmin/(:num)', 'SuperAdmin::gantiAdmin/$1');
+$routes->get('/superadmin/detailLaboratorium/(:num)', 'SuperAdmin::detailLaboratorium/$1');
+$routes->get('/superadmin/editLaboratorium/(:num)', 'SuperAdmin::editLaboratorium/$1');
+$routes->post('/superadmin/updateLaboratorium/(:num)', 'SuperAdmin::updateLaboratorium/$1');
+$routes->get('/superadmin/hapusLaboratorium/(:num)', 'SuperAdmin::hapusLaboratorium/$1');
+$routes->match(['get','post'], '/superadmin/gantiAdmin/(:num)', 'SuperAdmin::gantiAdmin/$1');
 
-$routes->get('superadmin/exportExcel', 'SuperAdmin::exportExcel');
-$routes->get('superadmin/exportPDF', 'SuperAdmin::exportPDF');
+// Export
+$routes->get('/superadmin/exportExcel', 'SuperAdmin::exportExcel');
+$routes->get('/superadmin/exportPDF', 'SuperAdmin::exportPDF');
 
 // Admin Lab CRUD
 $routes->get('/superadmin/adminlab', 'SuperAdmin::adminlab');
-$routes->get('/superadmin/tambahadmin', 'SuperAdmin::tambahAdmin');
-$routes->post('/superadmin/simpanadmin', 'SuperAdmin::simpanAdmin');
+$routes->get('/superadmin/tambahAdmin', 'SuperAdmin::tambahAdmin');
+$routes->post('/superadmin/simpanadmin', 'SuperAdmin::simpanadmin');
 
 // Riwayat
 $routes->get('/superadmin/riwayat', 'SuperAdmin::riwayat');
 
+// CRUD Tipe Laboratorium
+$routes->get('/superadmin/tipeLab', 'SuperAdmin::tipeLab');
+$routes->get('/superadmin/tambahTipe', 'SuperAdmin::tambahTipe');
+$routes->post('/superadmin/simpanTipe', 'SuperAdmin::simpanTipe');
+$routes->get('/superadmin/editTipe/(:num)', 'SuperAdmin::editTipe/$1');
+$routes->post('/superadmin/updateTipe/(:num)', 'SuperAdmin::updateTipe/$1');
+$routes->get('/superadmin/hapusTipe/(:num)', 'SuperAdmin::hapusTipe/$1');
+
+// CRUD Admin oleh SuperAdmin
+$routes->get('/superadmin/editadmin/(:num)', 'SuperAdmin::editadmin/$1');
+$routes->post('/superadmin/updateadmin/(:num)', 'SuperAdmin::updateadmin/$1');
+$routes->get('/superadmin/deleteadmin/(:num)', 'SuperAdmin::deleteadmin/$1');
 
 // =======================================================================
-// 🔥 BAGIAN INI YANG BENTROK — SUDAH DIBERSIHKAN & DISATUKAN
-// CRUD Tipe Laboratorium (SuperAdmin)
+// ======================== ROUTE ADMIN ================================
 // =======================================================================
 
-$routes->get('/superadmin/tipeLab', 'SuperAdmin::tipeLab');                  // list tipe lab
-$routes->get('/superadmin/tambahTipe', 'SuperAdmin::tambahTipe');           // form tambah
-$routes->post('/superadmin/simpanTipe', 'SuperAdmin::simpanTipe');          // simpan baru
-$routes->get('/superadmin/editTipe/(:num)', 'SuperAdmin::editTipe/$1');     // form edit
-$routes->post('/superadmin/updateTipe/(:num)', 'SuperAdmin::updateTipe/$1'); // update
-$routes->get('/superadmin/hapusTipe/(:num)', 'SuperAdmin::hapusTipe/$1');    // delete
+// Dashboard Admin
+$routes->get('/admin', 'Admin\C_A_Dashboard::index'); 
+
+// Peminjaman
+$routes->get('/admin/peminjaman', 'Admin\C_A_Peminjaman::index');
+$routes->get('/admin/peminjaman/setuju/(:num)', 'Admin\C_A_Peminjaman::setuju/$1');
+$routes->get('/admin/peminjaman/tolak/(:num)', 'Admin\C_A_Peminjaman::tolak/$1');
+
+// Jadwal
+$routes->get('/admin/jadwal', 'Admin\C_A_Jadwal::index');
+
+// Bahan / Alat
+$routes->get('/admin/bahan', 'Admin\C_A_Bahan::index');
+
+// Kelola User
+$routes->get('/admin/user', 'Admin\C_A_User::index');
+
+// Edit Harga Laboratorium
+$routes->get('/admin/harga', 'Admin\C_A_Harga::index');
+
+// Riwayat Perubahan Harga
+$routes->get('/admin/harga/riwayat', 'Admin\C_A_RiwayatHarga::index');
+
+// Riwayat Peminjaman
+$routes->get('/admin/riwayat', 'Admin\C_A_Riwayat::index');
 
 
-//crud admin pada superadmin
-$routes->get('superadmin/editadmin/(:num)', 'SuperAdmin::editadmin/$1');
-$routes->post('superadmin/updateadmin/(:num)', 'SuperAdmin::updateadmin/$1');
-$routes->get('superadmin/deleteadmin/(:num)', 'SuperAdmin::deleteadmin/$1');
-$routes->get('superadmin/tambahAdmin', 'SuperAdmin::tambahAdmin');
-$routes->post('superadmin/tambahAdmin', 'SuperAdmin::tambahAdmin');
-$routes->post('superadmin/simpanadmin', 'SuperAdmin::simpanadmin');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -250,44 +250,59 @@ return redirect()->to(base_url('superadmin/laboratorium'));
     /**
      * Form tambah admin lab & proses simpan
      */
-    public function tambahAdmin()
-        {
-            $this->checkLogin();
+                 public function tambahAdmin()
+                {
+                    $this->checkLogin();
 
-            if ($this->request->getMethod() === 'post') {
-                $this->userModel->save([
-                    'nim'      => $this->request->getPost('nim'),
-                    'nama'     => $this->request->getPost('nama'),
-                    'email'    => $this->request->getPost('email'),
-                    'alamat'   => $this->request->getPost('alamat'),
-                    'semester' => $this->request->getPost('semester'),
-                    'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                    'role'     => 'admin'
-                ]);
+                    if ($this->request->getMethod() === 'post') {
+                        $this->userModel->save([
+                            'nim'      => $this->request->getPost('nim'),
+                            'nama'     => $this->request->getPost('nama'),
+                            'email'    => $this->request->getPost('email'),
+                            'alamat'   => $this->request->getPost('alamat'),
+                            'semester' => $this->request->getPost('semester'),
+                            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                            'role'     => 'admin'
+                        ]);
 
-                return redirect()->to(base_url('superadmin/adminlab'));
-            }
+                        return redirect()->to(base_url('superadmin/adminlab'));
+                    }
 
-            return view('superadmin/v_tambah_admin');
-        }
+                    return view('superadmin/v_tambah_admin');
+                }
 
 
     /**
  * Form Edit Admin Lab
  */
-public function editadmin($id)
-{
-    $this->checkLogin();
+        public function editAdmin($id)
+        {
+            $admin = $this->userModel->find($id);
 
-    $admin = $this->userModel->find($id);
+            if ($this->request->getMethod() === 'post') {
 
-    if (!$admin || $admin['role'] !== 'admin') {
-        return redirect()->to(base_url('superadmin/adminlab'))
-                         ->with('error', 'Admin tidak ditemukan.');
-    }
+                $data = [
+                    'id'      => $id,
+                    'nim'     => $this->request->getPost('nim'),
+                    'nama'    => $this->request->getPost('nama'),
+                    'email'   => $this->request->getPost('email'),
+                    'alamat'  => $this->request->getPost('alamat'),
+                    'semester'=> $this->request->getPost('semester'),
+                ];
 
-    return view('superadmin/v_edit_admin', ['admin' => $admin]);
-}
+                if (!empty($this->request->getPost('password'))) {
+                    $data['password'] = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
+                }
+
+                // created_at tidak disentuh
+                $this->userModel->save($data);
+
+                return redirect()->to(base_url('superadmin/adminlab'));
+            }
+
+            return view('superadmin/v_edit_admin', ['admin' => $admin]);
+        }
+
 
 /**
  * Proses Update Admin Lab

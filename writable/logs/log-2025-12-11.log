@@ -16,3 +16,12 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
  5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
  6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-11 21:39:37 --> Invalid file: superadmin/v_riwayat.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('superadmin/v_riwayat.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('superadmin/v_riwayat', [], true)
+ 3 APPPATH\Controllers\SuperAdmin.php(404): view('superadmin/v_riwayat', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\SuperAdmin->riwayat()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdmin))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
