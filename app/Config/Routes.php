@@ -80,6 +80,14 @@ $routes->get('/superadmin/editTipe/(:num)', 'SuperAdmin::editTipe/$1');     // f
 $routes->post('/superadmin/updateTipe/(:num)', 'SuperAdmin::updateTipe/$1'); // update
 $routes->get('/superadmin/hapusTipe/(:num)', 'SuperAdmin::hapusTipe/$1');    // delete
 
+
+//crud admin pada superadmin
+$routes->get('superadmin/editadmin/(:num)', 'SuperAdmin::editadmin/$1');
+$routes->post('superadmin/updateadmin/(:num)', 'SuperAdmin::updateadmin/$1');
+$routes->get('superadmin/deleteadmin/(:num)', 'SuperAdmin::deleteadmin/$1');
+$routes->get('superadmin/tambahAdmin', 'SuperAdmin::tambahAdmin');
+$routes->post('superadmin/tambahAdmin', 'SuperAdmin::tambahAdmin');
+$routes->post('superadmin/simpanadmin', 'SuperAdmin::simpanadmin');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

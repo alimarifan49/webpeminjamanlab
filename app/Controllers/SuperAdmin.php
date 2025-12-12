@@ -55,15 +55,65 @@ class SuperAdmin extends BaseController
     /**
      * Daftar laboratorium
      */
-   public function laboratorium()
-    {
-        $laboratoriumModel = new LaboratoriumModel();
+            public function laboratorium()
+            {
+                $this->checkLogin();
 
-        // Ambil semua laboratorium beserta nama admin dan nama tipe lab
-        $data['laboratorium'] = $laboratoriumModel->getLaboratoriumWithAdminAndTipe();
+                // Model sudah diinisialisasi di __construct() sebagai $this->labModel
+                $labModel = $this->labModel;
 
-        return view('superadmin/v_laboratorium', $data);
-    }
+                // Ambil parameter GET
+                $perPage = $this->request->getGet('perPage') ?? 10;
+                $search  = trim((string)$this->request->getGet('search'));
+
+                // Query dasar: select + join (sama tujuan dengan getLaboratoriumWithAdminAndTipe)
+                $labQuery = $labModel
+                    ->select('laboratorium.*, tipe_laboratorium.nama_tipe, users.nama AS admin_nama, users.nim AS admin_nim')
+                    ->join('tipe_laboratorium', 'laboratorium.tipe_id = tipe_laboratorium.id', 'left')
+                    ->join('users', 'laboratorium.admin_id = users.id', 'left')
+                    ->orderBy('laboratorium.id', 'ASC');
+
+                // Jika ada pencarian, tambah kondisi
+                if ($search !== '') {
+                    $labQuery = $labQuery->groupStart()
+                        ->like('laboratorium.nama_lab', $search)
+                        ->orLike('laboratorium.lokasi', $search)
+                        ->orLike('tipe_laboratorium.nama_tipe', $search)
+                        ->orLike('users.nama', $search)
+                        ->orLike('users.nim', $search)
+                        ->groupEnd();
+                }
+
+                // Jika user pilih "all", ambil semua data tanpa paginate
+                if ($perPage === 'all') {
+                    $laboratorium = $labQuery->findAll();
+                    $pager = null;
+                } else {
+                    // pastikan integer
+                    $perPage = (int)$perPage;
+                    if ($perPage <= 0) $perPage = 10;
+
+                    $laboratorium = $labQuery->paginate($perPage);
+                    $pager = $labModel->pager;
+
+                    // Pastikan pager mempertahankan query perPage & search
+                    // NOTE: setPath tetap menaruh query string awal; CI4 pager akan menambahkan segment/page param sendiri
+                    $query = http_build_query([
+                        'perPage' => $perPage,
+                        'search'  => $search
+                    ]);
+                    $pager->setPath(base_url('superadmin/laboratorium') . '?' . $query);
+                }
+
+                // Kirim data ke view (format kompatibel dg view yang sebelumnya)
+                return view('superadmin/v_laboratorium', [
+                    'laboratorium' => $laboratorium,
+                    'pager'        => $pager,
+                    'perPage'      => $perPage,
+                    'search'       => $search
+                ]);
+            }
+
 
     
     // Hapus laboratorium
@@ -157,36 +207,138 @@ return redirect()->to(base_url('superadmin/laboratorium'));
 }
 
     /**
-     * Daftar admin lab
+     * Daftar admin lab adminnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
      */
     public function adminlab()
     {
         $this->checkLogin();
-        $data['admins'] = $this->userModel->where('role', 'admin')->findAll();
-        return view('superadmin/v_adminlab', $data); // pastikan view ada
+
+        // Ambil query search (GET)
+        $search = trim($this->request->getGet('search') ?? '');
+
+        // Builder hanya untuk role admin
+        $builder = $this->userModel->where('role', 'admin');
+
+        if ($search !== '') {
+            // Cari di semua field yang relevan
+            $builder->groupStart()
+                    ->like('id', $search)
+                    ->orLike('nim', $search)
+                    ->orLike('nama', $search)
+                    ->orLike('email', $search)
+                    ->orLike('alamat', $search)
+                    ->orLike('semester', $search)
+                    ->groupEnd();
+        }
+
+        // Pagination: 10 per halaman
+        $perPage = 10;
+        $data['admins'] = $builder->paginate($perPage);
+        $data['pager']  = $this->userModel->pager;
+        $data['search'] = $search; // untuk mengembalikan nilai input di view
+
+        // Jika ada search, set path pager supaya link pagination mempertahankan parameter search
+        if ($search !== '') {
+            $data['pager']->setPath(base_url('superadmin/adminlab') . '?search=' . urlencode($search));
+        }
+
+        return view('superadmin/v_adminlab', $data);
     }
+
+
 
     /**
      * Form tambah admin lab & proses simpan
      */
     public function tambahAdmin()
-    {
-        $this->checkLogin();
+        {
+            $this->checkLogin();
 
-        if ($this->request->getMethod() === 'post') {
-            $this->userModel->save([
-                'nim'      => $this->request->getPost('nim'),
-                'nama'     => $this->request->getPost('nama'),
-                'email'    => $this->request->getPost('email'),
-                'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                'role'     => 'admin'
-            ]);
+            if ($this->request->getMethod() === 'post') {
+                $this->userModel->save([
+                    'nim'      => $this->request->getPost('nim'),
+                    'nama'     => $this->request->getPost('nama'),
+                    'email'    => $this->request->getPost('email'),
+                    'alamat'   => $this->request->getPost('alamat'),
+                    'semester' => $this->request->getPost('semester'),
+                    'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                    'role'     => 'admin'
+                ]);
 
-            return redirect()->to(base_url('superadmin/adminlab'));
+                return redirect()->to(base_url('superadmin/adminlab'));
+            }
+
+            return view('superadmin/v_tambah_admin');
         }
 
-        return view('superadmin/v_tambah_admin'); // pastikan view ada
+
+    /**
+ * Form Edit Admin Lab
+ */
+public function editadmin($id)
+{
+    $this->checkLogin();
+
+    $admin = $this->userModel->find($id);
+
+    if (!$admin || $admin['role'] !== 'admin') {
+        return redirect()->to(base_url('superadmin/adminlab'))
+                         ->with('error', 'Admin tidak ditemukan.');
     }
+
+    return view('superadmin/v_edit_admin', ['admin' => $admin]);
+}
+
+/**
+ * Proses Update Admin Lab
+ */
+public function updateadmin($id)
+{
+    $this->checkLogin();
+
+    $data = [
+        'nim'   => $this->request->getPost('nim'),
+        'nama'  => $this->request->getPost('nama'),
+        'email' => $this->request->getPost('email'),
+        'alamat' => $this->request->getPost('alamat'),
+        'semester' => $this->request->getPost('semester'),
+    ];
+
+    // Jika password diisi, update password
+    $password = $this->request->getPost('password');
+    if (!empty($password)) {
+        $data['password'] = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    $this->userModel->update($id, $data);
+
+    return redirect()->to(base_url('superadmin/adminlab'))
+                     ->with('success', 'Data admin berhasil diperbarui.');
+}
+
+/**
+ * Hapus Admin Lab
+ */
+public function deleteadmin($id)
+{
+    $this->checkLogin();
+
+    $admin = $this->userModel->find($id);
+
+    if (!$admin || $admin['role'] !== 'admin') {
+        return redirect()->to(base_url('superadmin/adminlab'))
+                         ->with('error', 'Admin tidak ditemukan.');
+    }
+
+    $this->userModel->delete($id);
+
+    return redirect()->to(base_url('superadmin/adminlab'))
+                     ->with('success', 'Admin berhasil dihapus.');
+}
+
+
+//adminnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
 
     public function tambahLaboratorium()
     {

@@ -17,6 +17,16 @@
         <input type="text" id="tableSearch" 
        class="form-control mb-3" 
        placeholder="Cari laboratorium...">
+<form method="get" class="mb-3 d-flex align-items-center" style="gap:10px;">
+    <label><strong>Tampilkan:</strong></label>
+
+    <select name="perPage" onchange="this.form.submit()" class="form-select" style="width:150px;">
+        <option value="10" <?= ($perPage == 10 ? 'selected' : '') ?>>10</option>
+        <option value="20" <?= ($perPage == 20 ? 'selected' : '') ?>>20</option>
+        <option value="30" <?= ($perPage == 30 ? 'selected' : '') ?>>30</option>
+        <option value="all" <?= ($perPage == 'all' ? 'selected' : '') ?>>Semua</option>
+    </select>
+</form>
 
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
@@ -55,6 +65,12 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <?php if ($pager): ?>
+    <div class="mt-3">
+        <?= $pager->links() ?>
+    </div>
+<?php endif; ?>
+
     </div>
 <?php else : ?>
     <p class="text-muted">Belum ada laboratorium yang terdaftar.</p>
